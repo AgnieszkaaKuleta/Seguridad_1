@@ -1,29 +1,19 @@
-1. Dado	el	siguiente	código	Python,	que	implementa	el	cifrado	Cesar	(+3)	para	el	alfabeto	inglés
-en	Mayúsculas (C:	M	→	M	+	3	(mod.	26)),
-def cifradoCesarAlfabetoInglesMAY(cadena):
- """Devuelve un cifrado Cesar tradicional (+3)"""
- # Definir la nueva cadena resultado
- resultado = ''
- # Realizar el "cifrado", sabiendo que A = 65, Z = 90, a = 97, z = 122
- i = 0
- while i < len(cadena):
-# Recoge el caracter a cifrar
-ordenClaro = ord(cadena[i])
-ordenCifrado = 0
-# Cambia el caracter a cifrar
-if (ordenClaro >= 65 and ordenClaro <= 90):
-ordenCifrado = (((ordenClaro - 65) + 3) % 26) + 65
-# Añade el caracter cifrado al resultado
-resultado = resultado + chr(ordenCifrado)
-i = i + 1
- # devuelve el resultado
- return resultado
-se	pide	implementar	la	siguiente	funcionalidad:	
-a) Implementar	la	función	de	descifrado Cesar	para	alfabeto	inglés	en	mayúsculas,	la	cual
-descifre	los	textos	cifrados	creados	por	el	código	anterior.
-b) Modificar	las	funciones	de	cifrado	y	descifrado,	para	que	soporten	tanto	letras	en
-mayúsculas	(A..Z)	como	letras	en	minúsculas	(a..z)	en	el	alfabeto	Inglés.
-c) Modificar	las	funciones	de	cifrado	y	descifrado,	para	que	soporten	el	cifrado	Cesar
-generalizado	(C:	M	→	M	+	i	(mod.	26))
-Para realizar este ejercicio, se aconseja disponer de una tabla ASCII, la cual muestra la posición	de	
-cada	una	de	las	letras	del alfabeto inglés
+1. El código Python descrito en el apéndice muestra cómo se cifra y se descifra un texto utilizando
+DES en modo CBC. Crear un código Python que cifre y descifre tanto el texto Hola amigos de la
+seguridad como el texto Hola amigas de la seguridad utilizando AES en modo CBC usando la
+misma clave e IV.
+Si se observa los textos cifrados, es posible ver que ese cambio de una “o” por una “a” (amigos
+→ amigas) impacta en ambos textos, ¿a qué se debe ese cambio?
+2. Se pide cifrar y descifrar en AES el mensaje “Hola Amigos de Seguridad” utilizando los
+siguientes modos de operación:
+a. ECB.
+b. CTR, pasando por parámetro únicamente el campo nonce (valor aleatorio, de tamaño
+(tamaño de bloque / 2)).
+c. OFB, pasando por parámetro únicamente un valor IV aleatorio.
+d. CFB, pasando por parámetro únicamente un valor IV aleatorio.
+e. GCM, pasando como parámetros el campo nonce (valor aleatorio del mismo tamaño de
+bloque) y mac_len (16).
+Para más información:
+https://pycryptodome.readthedocs.io/en/latest/src/cipher/aes.html
+3. (OPCIONAL) Utilizando como base el código del apartado 1 (AES en modo CBC), crear una
+clase llamada AES_CIPHER_CBC que tenga los siguientes métodos,
